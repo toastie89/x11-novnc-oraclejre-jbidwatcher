@@ -28,9 +28,9 @@ RUN \
   && wget -qO-  "https://www.jbidwatcher.com/download/"$ver -P /opt/jbidwatcher/ |\
      tar -jx --strip-components=1 -C /opt/jbidwatcher/
   
-
-# Define commonly used JAVA_HOME variable.
-ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
+## Auto-connect
+sed -i 's/<body>/<body onload="document.getElementById('noVNC_connect_button').click();">/g' \
+/opt/noVNC/vnc.html
 
 
 # Configure & run supervisor
