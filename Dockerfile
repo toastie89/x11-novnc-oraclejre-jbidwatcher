@@ -29,9 +29,8 @@ RUN \
      tar -jx --strip-components=1 -C /opt/jbidwatcher/
   
 ## Auto-connect
-sed -i 's/<body>/<body onload="document.getElementById('noVNC_connect_button').click();">/g' \
+RUN sed -i 's/<body>/<body onload="document.getElementById(\x27noVNC_connect_button\x27).click();">/g' \
 /opt/noVNC/vnc.html
-
 
 # Configure & run supervisor
 COPY jbidwatcher.conf /etc/supervisor/conf.d/jbidwatcher.conf
