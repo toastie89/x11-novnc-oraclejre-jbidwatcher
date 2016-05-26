@@ -19,7 +19,8 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
 ENV TZ Europe/Berlin
 
-## Get file name, download and install JBidWatcher.
+
+## Get file name, download and extract JBidWatcher.
 RUN \
   mkdir -p /opt/jbidwatcher \
   && apt-get install bzip2 \
