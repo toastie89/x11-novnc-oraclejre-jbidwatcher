@@ -22,9 +22,11 @@ ENV TZ Europe/Berlin
 ## Get file name, download and install JBidWatcher.
 RUN \
   mkdir -p /opt/jbidwatcher \
-  && apt-get install bzip2
+  && apt-get install bzip2 \
   && ver=`wget https://www.jbidwatcher.com/ -O - | grep -o -P 'JBidwatcher\-.*?.tar.bz2' | head -n1` \
-  && wget "https://www.jbidwatcher.com/download/"$ver -P /opt/jbidwatcher/
+  && wget -qO-  "https://www.jbidwatcher.com/download/"$ver -P /opt/jbidwatcher/ |\
+     tar -jx --strip-components=1 -C /opt/jbidwatcher/
+  
 
 # Define commonly used JAVA_HOME variable.
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
